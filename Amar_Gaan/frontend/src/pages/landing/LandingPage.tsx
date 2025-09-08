@@ -48,25 +48,25 @@ const LandingPage = () => {
 			</div>
 
 			{/* Navigation */}
-			<nav className="relative z-10 flex items-center justify-between p-6 md:p-8">
+			<nav className="relative z-10 flex items-center justify-between p-4 sm:p-6 md:p-8">
 				<motion.div 
-					className="flex items-center space-x-3"
+					className="flex items-center space-x-2 sm:space-x-3"
 					initial={{ opacity: 0, x: -50 }}
 					animate={{ opacity: 1, x: 0 }}
 					transition={{ duration: 0.8 }}
 				>
 					<div className="relative">
-						<div className="w-12 h-12 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-cyan-500/25">
-							<Headphones className="size-7 text-white" />
+						<div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg shadow-cyan-500/25">
+							<Headphones className="size-4 sm:size-5 md:size-7 text-white" />
 					</div>
-						<div className="absolute inset-0 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-xl blur opacity-30 animate-pulse"></div>
+						<div className="absolute inset-0 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-lg sm:rounded-xl blur opacity-30 animate-pulse"></div>
 				</div>
-					<span className="text-3xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+					<span className="text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
 						SoundScape
 					</span>
 				</motion.div>
 				<motion.div 
-					className="flex items-center space-x-4"
+					className="flex items-center space-x-2 sm:space-x-4"
 					initial={{ opacity: 0, x: 50 }}
 					animate={{ opacity: 1, x: 0 }}
 					transition={{ duration: 0.8, delay: 0.2 }}
@@ -74,33 +74,36 @@ const LandingPage = () => {
 					<Button
 						variant="outline"
 						onClick={() => navigate("/sign-up")}
-						className="backdrop-blur-md bg-white/10 border-cyan-400/30 text-cyan-300 hover:bg-cyan-400/20 hover:text-white transition-all duration-300"
+						className="backdrop-blur-md bg-white/10 border-cyan-400/30 text-cyan-300 hover:bg-cyan-400/20 hover:text-white transition-all duration-300 text-xs sm:text-sm"
 					>
-						<Mic className="size-4 mr-2" />
-						Join As Artist
+						<Mic className="size-3 sm:size-4 mr-1 sm:mr-2" />
+						<span className="hidden sm:inline">Join As Artist</span>
+						<span className="sm:hidden">Artist</span>
 					</Button>
 					<Button
 						variant="outline"
 						onClick={() => navigate("/login")}
-						className="backdrop-blur-md bg-white/10 border-purple-400/30 text-purple-300 hover:bg-purple-400/20 hover:text-white transition-all duration-300"
+						className="backdrop-blur-md bg-white/10 border-purple-400/30 text-purple-300 hover:bg-purple-400/20 hover:text-white transition-all duration-300 text-xs sm:text-sm"
 					>
-						Sign In
+						<span className="hidden sm:inline">Sign In</span>
+						<span className="sm:hidden">Login</span>
 					</Button>
 					<Button
 						onClick={() => navigate("/sign-up")}
-						className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white shadow-lg shadow-cyan-500/25 transition-all duration-300 hover:shadow-cyan-500/40"
+						className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white shadow-lg shadow-cyan-500/25 transition-all duration-300 hover:shadow-cyan-500/40 text-xs sm:text-sm"
 					>
-						<Sparkles className="size-4 mr-2" />
-						Get Started
+						<Sparkles className="size-3 sm:size-4 mr-1 sm:mr-2" />
+						<span className="hidden sm:inline">Get Started</span>
+						<span className="sm:hidden">Start</span>
 					</Button>
 				</motion.div>
 			</nav>
 
 			{/* Hero Section */}
-			<div className="relative z-10 text-center px-6 md:px-8 py-20 md:py-32">
+			<div className="relative z-10 text-center px-4 sm:px-6 md:px-8 py-16 sm:py-20 md:py-32">
 				{/* 3D Floating Elements */}
 				<motion.div
-					className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-2xl backdrop-blur-md border border-cyan-400/30"
+					className="absolute top-20 left-4 sm:left-10 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-cyan-400/20 to-blue-600/20 rounded-2xl backdrop-blur-md border border-cyan-400/30"
 					animate={{
 						y: [0, -20, 0],
 						rotate: [0, 5, 0],
@@ -117,7 +120,7 @@ const LandingPage = () => {
 				</motion.div>
 
 				<motion.div
-					className="absolute top-32 right-16 w-16 h-16 bg-gradient-to-br from-pink-400/20 to-purple-600/20 rounded-full backdrop-blur-md border border-pink-400/30"
+					className="absolute top-32 right-8 sm:right-16 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-pink-400/20 to-purple-600/20 rounded-full backdrop-blur-md border border-pink-400/30"
 					animate={{
 						y: [0, 15, 0],
 						rotate: [0, -5, 0],
@@ -153,7 +156,7 @@ const LandingPage = () => {
 				</motion.div>
 
 				<motion.h1 
-					className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight"
+					className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 sm:mb-8 leading-tight"
 					initial={{ opacity: 0, y: 50 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 1, delay: 0.3 }}
@@ -165,7 +168,7 @@ const LandingPage = () => {
 				</motion.h1>
 
 				<motion.p 
-					className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+					className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed px-4"
 					initial={{ opacity: 0, y: 30 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 1, delay: 0.6 }}
@@ -175,7 +178,7 @@ const LandingPage = () => {
 				</motion.p>
 
 				<motion.div 
-					className="flex flex-col sm:flex-row items-center justify-center gap-6"
+					className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
 					initial={{ opacity: 0, y: 30 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 1, delay: 0.9 }}
@@ -183,23 +186,25 @@ const LandingPage = () => {
 					<Button
 						onClick={() => navigate("/sign-up")}
 						size="lg"
-						className="group relative bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white text-xl px-10 py-6 rounded-2xl shadow-2xl shadow-cyan-500/25 transition-all duration-300 hover:shadow-cyan-500/40 hover:scale-105"
+						className="group relative bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 rounded-xl sm:rounded-2xl shadow-2xl shadow-cyan-500/25 transition-all duration-300 hover:shadow-cyan-500/40 hover:scale-105 w-full sm:w-auto"
 					>
-						<div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
-						<span className="relative flex items-center">
-							<Zap className="mr-3 size-6" />
-							Start Your Journey
-							<ArrowRight className="ml-3 size-6 group-hover:translate-x-1 transition-transform" />
+						<div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl sm:rounded-2xl blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
+						<span className="relative flex items-center justify-center">
+							<Zap className="mr-2 sm:mr-3 size-4 sm:size-5 md:size-6" />
+							<span className="hidden sm:inline">Start Your Journey</span>
+							<span className="sm:hidden">Get Started</span>
+							<ArrowRight className="ml-2 sm:ml-3 size-4 sm:size-5 md:size-6 group-hover:translate-x-1 transition-transform" />
 						</span>
 					</Button>
 
 					<Button
 						onClick={() => navigate("/sign-up")}
 						size="lg"
-						className="group backdrop-blur-md bg-white/10 border-2 border-purple-400/30 text-purple-300 hover:bg-purple-400/20 hover:text-white text-xl px-10 py-6 rounded-2xl transition-all duration-300 hover:scale-105"
+						className="group backdrop-blur-md bg-white/10 border-2 border-purple-400/30 text-purple-300 hover:bg-purple-400/20 hover:text-white text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 rounded-xl sm:rounded-2xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
 					>
-						<Mic className="mr-3 size-6" />
-						Become an Artist
+						<Mic className="mr-2 sm:mr-3 size-4 sm:size-5 md:size-6" />
+						<span className="hidden sm:inline">Become an Artist</span>
+						<span className="sm:hidden">Join as Artist</span>
 					</Button>
 
 					<Button
