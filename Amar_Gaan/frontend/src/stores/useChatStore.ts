@@ -93,7 +93,29 @@ export const useChatStore = create<ChatStore>((set, get) => ({
       console.log("🔌 Initializing socket connection for user:", userId);
 
       socket.auth = { userId };
-      socket.connect();
+      
+      // Add retry mechanism
+      let retryCount = 0;
+      const maxRetries = 3;
+      
+      const connectWithRetry = () => {
+        socket.connect();
+        
+        socket.once("connect_error", (error) => {
+          retryCount++;
+          console.log(`🔄 Socket connection attempt ${retryCount} failed:`, error.message);
+          
+          if (retryCount < maxRetries) {
+            console.log(`🔄 Retrying socket connection in 2 seconds... (${retryCount}/${maxRetries})`);
+            setTimeout(connectWithRetry, 2000);
+          } else {
+            console.error("❌ Max socket connection retries reached");
+            toast.error("Unable to connect to server. Please check your internet connection.");
+          }
+        });
+      };
+      
+      connectWithRetry();
 
       socket.on("connect", () => {
         console.log("✅ Socket connected with ID:", socket.id);
@@ -267,12 +289,18 @@ export const useChatStore = create<ChatStore>((set, get) => ({
       socket.on("connect_error", (error) => {
         console.error("❌ Socket connection error:", error);
         set({ isConnected: false });
-        toast.error("Failed to connect to server. Please refresh the page.");
+        // Only show error toast if it's not a network error (which might be temporary)
+        if (error.message && !error.message.includes("Network Error")) {
+          toast.error("Failed to connect to server. Please refresh the page.");
+        }
       });
 
       socket.on("error", (error) => {
         console.error("❌ Socket error:", error);
-        toast.error("Connection error occurred. Please refresh the page.");
+        // Only show error toast for critical errors
+        if (error.message && !error.message.includes("Network Error")) {
+          toast.error("Connection error occurred. Please refresh the page.");
+        }
       });
     } else {
       console.log("🔌 Socket already connected, skipping initialization");
