@@ -3,6 +3,7 @@ services:
     name: soundscape-backend
     env: node
     plan: free
+    rootDir: Amar_Gaan/backend
     buildCommand: npm install
     startCommand: npm start
     healthCheckPath: /api/health

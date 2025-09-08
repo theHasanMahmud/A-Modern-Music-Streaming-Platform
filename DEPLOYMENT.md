@@ -34,6 +34,7 @@ Frontend (Vercel) ←→ Backend (Render) ←→ MongoDB Atlas
 2. **Configure the service:**
    - **Name**: `soundscape-backend`
    - **Environment**: `Node`
+   - **Root Directory**: `Amar_Gaan/backend`
    - **Build Command**: `npm install`
    - **Start Command**: `npm start`
    - **Plan**: Free (or paid for better performance)
