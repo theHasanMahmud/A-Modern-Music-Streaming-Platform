@@ -112,7 +112,7 @@ const SearchPage = () => {
 
 	const handleFavoriteToggle = async (song: any) => {
 		try {
-			const isFavorited = await checkFavoriteStatus('song', song._id);
+			const isFavorited = await checkFavoriteStatus(song._id);
 			
 			if (isFavorited) {
 				await removeFromFavorites(song._id);

@@ -117,7 +117,7 @@ const EmojiPicker = ({ onEmojiSelect, onClose, className }: EmojiPickerProps) =>
 	const filteredEmojis = useMemo(() => {
 		if (!searchQuery.trim()) return emojiCategories;
 
-		const filtered: typeof emojiCategories = {};
+		const filtered: typeof emojiCategories = {} as any;
 		Object.entries(emojiCategories).forEach(([key, category]) => {
 			const matchingEmojis = category.emojis.filter(emoji => 
 				// This is a simple search - in a real app you'd want emoji names/keywords

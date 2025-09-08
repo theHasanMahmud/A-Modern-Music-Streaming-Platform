@@ -330,8 +330,8 @@ const ArtistProfilePage = () => {
 											className="flex items-center gap-4 p-3 rounded-lg hover:bg-zinc-700/50 transition-colors cursor-pointer group"
 											onClick={() => {
 												// Navigate to album page if song has albumId
-												if (song.albumId) {
-													navigate(`/album/${song.albumId}`);
+												if ((song as any).albumId) {
+													navigate(`/album/${(song as any).albumId}`);
 												}
 											}}
 										>
