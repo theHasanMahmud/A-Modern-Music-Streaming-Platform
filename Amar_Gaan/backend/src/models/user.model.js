@@ -60,7 +60,11 @@ const userSchema = new mongoose.Schema(
 			type: Number,
 			default: 0,
 		},
-		// Artist-specific fields
+		// Admin and Artist-specific fields
+		isAdmin: {
+			type: Boolean,
+			default: false,
+		},
 		isArtist: {
 			type: Boolean,
 			default: false,

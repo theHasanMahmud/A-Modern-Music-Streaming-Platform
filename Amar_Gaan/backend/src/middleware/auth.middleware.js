@@ -20,7 +20,7 @@ export const requireAdmin = async (req, res, next) => {
 	try {
 		console.log("=== ADMIN MIDDLEWARE DEBUG ===");
 		console.log("User ID:", req.auth.userId);
-		console.log("Admin email from env:", process.env.ADMIN_EMAIL);
+		console.log("Admin emails from env:", process.env.ADMIN_EMAILS);
 		
 		const currentUser = await clerkClient.users.getUser(req.auth.userId);
 		console.log("Current user email:", currentUser.primaryEmailAddress?.emailAddress);
@@ -31,8 +31,19 @@ export const requireAdmin = async (req, res, next) => {
 			email: currentUser.primaryEmailAddress?.emailAddress
 		});
 		
-		const isAdmin = process.env.ADMIN_EMAIL === currentUser.primaryEmailAddress?.emailAddress;
-		console.log("Is admin:", isAdmin);
+		// Check environment variable admins (backward compatibility)
+		const adminEmails = process.env.ADMIN_EMAILS?.split(',').map(email => email.trim()) || [];
+		const isEnvAdmin = adminEmails.includes(currentUser.primaryEmailAddress?.emailAddress);
+		
+		// Check database admin status
+		const { User } = await import("../models/user.model.js");
+		const dbUser = await User.findOne({ clerkId: req.auth.userId });
+		const isDbAdmin = dbUser?.isAdmin || false;
+		
+		const isAdmin = isEnvAdmin || isDbAdmin;
+		console.log("Is admin (env):", isEnvAdmin);
+		console.log("Is admin (db):", isDbAdmin);
+		console.log("Is admin (final):", isAdmin);
 
 		if (!isAdmin) {
 			console.log("❌ User is not admin");

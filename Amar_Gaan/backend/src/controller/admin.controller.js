@@ -500,3 +500,83 @@ export const deleteArtist = async (req, res, next) => {
 	}
 };
 
+// Get all admins
+export const getAdmins = async (req, res, next) => {
+	try {
+		const admins = await User.find({ isAdmin: true })
+			.select('fullName imageUrl clerkId createdAt')
+			.sort({ createdAt: -1 });
+
+		res.status(200).json({ admins });
+	} catch (error) {
+		console.error("❌ Error getting admins:", error);
+		next(error);
+	}
+};
+
+// Add admin by user ID
+export const addAdmin = async (req, res, next) => {
+	try {
+		const { userId } = req.params;
+		
+		const user = await User.findById(userId);
+		if (!user) {
+			return res.status(404).json({ message: "User not found" });
+		}
+		
+		if (user.isAdmin) {
+			return res.status(400).json({ message: "User is already an admin" });
+		}
+		
+		user.isAdmin = true;
+		await user.save();
+		
+		console.log("✅ Admin added:", user.fullName);
+		
+		res.status(200).json({ 
+			message: "Admin added successfully",
+			admin: {
+				id: user._id,
+				fullName: user.fullName,
+				isAdmin: user.isAdmin
+			}
+		});
+	} catch (error) {
+		console.error("❌ Error adding admin:", error);
+		next(error);
+	}
+};
+
+// Remove admin by user ID
+export const removeAdmin = async (req, res, next) => {
+	try {
+		const { userId } = req.params;
+		
+		const user = await User.findById(userId);
+		if (!user) {
+			return res.status(404).json({ message: "User not found" });
+		}
+		
+		if (!user.isAdmin) {
+			return res.status(400).json({ message: "User is not an admin" });
+		}
+		
+		user.isAdmin = false;
+		await user.save();
+		
+		console.log("🗑️ Admin removed:", user.fullName);
+		
+		res.status(200).json({ 
+			message: "Admin removed successfully",
+			user: {
+				id: user._id,
+				fullName: user.fullName,
+				isAdmin: user.isAdmin
+			}
+		});
+	} catch (error) {
+		console.error("❌ Error removing admin:", error);
+		next(error);
+	}
+};
+

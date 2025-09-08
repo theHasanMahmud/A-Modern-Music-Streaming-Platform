@@ -14,7 +14,10 @@ import {
 	getArtistApplications,
 	approveArtistApplication,
 	rejectArtistApplication,
-	deleteArtist
+	deleteArtist,
+	getAdmins,
+	addAdmin,
+	removeAdmin
 } from "../controller/admin.controller.js";
 import { createAlbum } from "../controller/album.controller.js";
 import { protectRoute, requireAdmin } from "../middleware/auth.middleware.js";
@@ -122,6 +125,11 @@ router.get("/artist-applications", getArtistApplications);
 router.post("/artist-applications/:id/approve", approveArtistApplication);
 router.post("/artist-applications/:id/reject", rejectArtistApplication);
 router.delete("/artist-applications/:id/delete", deleteArtist);
+
+// Admin management routes
+router.get("/admins", getAdmins);
+router.post("/admins/:userId", addAdmin);
+router.delete("/admins/:userId", removeAdmin);
 
 // Test endpoint using express-fileupload instead of multer
 router.post("/test-fileupload", async (req, res) => {
