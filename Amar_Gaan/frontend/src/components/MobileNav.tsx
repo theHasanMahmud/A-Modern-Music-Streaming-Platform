@@ -42,7 +42,7 @@ const MobileNav = () => {
 	const isActive = (path: string) => location.pathname === path;
 
 	const navigationItems = [
-		{ path: "/", label: "Home", icon: Home },
+		{ path: "/home", label: "Home", icon: Home },
 		{ path: "/search", label: "Search", icon: Search },
 		{ path: "/library", label: "Your Library", icon: Library },
 	];

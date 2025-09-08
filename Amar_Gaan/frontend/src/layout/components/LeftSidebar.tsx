@@ -126,7 +126,7 @@ const LeftSidebar = () => {
 				<div className='space-y-1 sm:space-y-2'>
 					<motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
 						<Link
-							to={"/"}
+							to={"/home"}
 							className={cn(
 								buttonVariants({
 									variant: "ghost",
