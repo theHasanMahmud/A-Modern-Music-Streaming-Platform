@@ -56,6 +56,16 @@ try {
 	);
 	
 	console.log("✅ App rendered successfully");
+
+// Test backend connection
+fetch(`${import.meta.env.VITE_API_BASE_URL}/api/test`)
+	.then(response => response.json())
+	.then(data => {
+		console.log("🔗 Backend connection test successful:", data);
+	})
+	.catch(error => {
+		console.error("❌ Backend connection test failed:", error);
+	});
 } catch (error) {
 	console.error("❌ Failed to render app:", error);
 	document.body.innerHTML = `
