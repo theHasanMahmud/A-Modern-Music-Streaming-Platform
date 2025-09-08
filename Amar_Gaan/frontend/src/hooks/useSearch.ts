@@ -15,7 +15,7 @@ interface UseSearchReturn {
 	showSuggestions: boolean;
 	setShowSuggestions: (show: boolean) => void;
 	performSearch: (query: string) => Promise<void>;
-	performRealtimeSearch: (query: string) => Promise<void>;
+	performRealtimeSearch: (query: string) => Promise<() => void>;
 	handleSuggestionClick: (suggestion: SearchSuggestion) => void;
 	clearSearch: () => void;
 	clearRecentSearches: () => void;
@@ -141,6 +141,7 @@ export const useSearch = (): UseSearchReturn => {
 			}
 		}, 500);
 
+		// Return cleanup function for timeout
 		return () => {
 			if (searchTimeoutRef.current) {
 				clearTimeout(searchTimeoutRef.current);

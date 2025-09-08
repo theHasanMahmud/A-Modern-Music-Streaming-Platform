@@ -290,7 +290,7 @@ const ArtistVerificationPage = () => {
 								{verificationStatus.verificationStatus === 'approved' && (
 									<div className="text-center space-y-4">
 										<div className="flex justify-center">
-											<VerifiedBadge size="large" showText={true} />
+											<VerifiedBadge size="lg" showText={true} />
 										</div>
 										<div className="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
 											<h4 className="text-green-400 font-semibold mb-2">🎉 Congratulations!</h4>
@@ -345,7 +345,7 @@ const ArtistVerificationPage = () => {
 							</CardHeader>
 							<CardContent className="space-y-3">
 								<div className="flex items-start gap-3">
-									<VerifiedBadge size="small" />
+									<VerifiedBadge size="sm" />
 									<span className="text-zinc-300 text-sm">Blue verification badge</span>
 								</div>
 								<div className="flex items-start gap-3">

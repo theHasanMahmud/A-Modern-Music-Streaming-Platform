@@ -138,6 +138,12 @@ export interface Settings {
 	discovery: UniqueSettings;
 	developer: AdvancedSettings;
 	platforms: PlatformSettings;
+	advanced?: {
+		[key: string]: any;
+	};
+	unique?: {
+		[key: string]: any;
+	};
 }
 
 interface SettingsStore {
