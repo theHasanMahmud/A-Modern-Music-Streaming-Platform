@@ -1,0 +1,13 @@
+# Add directories or file patterns to ignore during indexing (e.g. foo/ or *.csv)
+
+# Explicitly include .env files (they should not be ignored)
+!**/.env
+!**/.env.*
+!Amar_Gaan/backend/.env
+!Amar_Gaan/backend/.env.*
+!Amar_Gaan/frontend/.env
+!Amar_Gaan/frontend/.env.*
+
+# Ensure no patterns are excluding .env files
+!**/*.env
+!**/*.env.*
