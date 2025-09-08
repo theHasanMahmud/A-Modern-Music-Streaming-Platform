@@ -115,10 +115,18 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Serve static files from tmp directory (for temporary uploads)
 app.use('/tmp', express.static(path.join(__dirname, 'tmp')));
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production" && fs.existsSync(path.join(__dirname, "../frontend/dist"))) {
 	app.use(express.static(path.join(__dirname, "../frontend/dist")));
 	app.get("*", (req, res) => {
 		res.sendFile(path.resolve(__dirname, "../frontend", "dist", "index.html"));
+	});
+} else if (process.env.NODE_ENV === "production") {
+	app.get("*", (req, res) => {
+		res.json({ 
+			message: "SoundScape Backend API is running", 
+			status: "OK",
+			frontend: "Deployed separately on Vercel"
+		});
 	});
 }
 
