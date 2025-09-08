@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useParams } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 // Pages
@@ -39,6 +39,27 @@ import LandingPage from "./pages/landing/LandingPage";
 import MainLayout from "./layout/MainLayout";
 import AuthWrapper from "./components/AuthWrapper";
 import { SidebarProvider } from "./contexts/SidebarContext";
+
+// Redirect components for dynamic routes
+const PlaylistRedirect = () => {
+	const { id } = useParams();
+	return <Navigate to={`/home/playlist/${id}`} replace />;
+};
+
+const ProfileRedirect = () => {
+	const { id } = useParams();
+	return <Navigate to={`/home/profile/${id}`} replace />;
+};
+
+const AlbumRedirect = () => {
+	const { id } = useParams();
+	return <Navigate to={`/home/album/${id}`} replace />;
+};
+
+const ChatRedirect = () => {
+	const { userId } = useParams();
+	return <Navigate to={`/home/chat/${userId}`} replace />;
+};
 
 function App() {
 	console.log("🎭 App component rendering...");
@@ -83,14 +104,14 @@ function App() {
 					<Route path="/search" element={<Navigate to="/home/search" replace />} />
 					<Route path="/library" element={<Navigate to="/home/library" replace />} />
 					<Route path="/liked-songs" element={<Navigate to="/home/liked-songs" replace />} />
-					<Route path="/playlist/:id" element={<Navigate to="/home/playlist/:id" replace />} />
-					<Route path="/profile/:id" element={<Navigate to="/home/profile/:id" replace />} />
+					<Route path="/playlist/:id" element={<PlaylistRedirect />} />
+					<Route path="/profile/:id" element={<ProfileRedirect />} />
 					<Route path="/profile/edit" element={<Navigate to="/home/profile/edit" replace />} />
 					<Route path="/settings" element={<Navigate to="/home/settings" replace />} />
 					<Route path="/admin" element={<Navigate to="/home/admin" replace />} />
-					<Route path="/album/:id" element={<Navigate to="/home/album/:id" replace />} />
+					<Route path="/album/:id" element={<AlbumRedirect />} />
 					<Route path="/chat" element={<Navigate to="/home/chat" replace />} />
-					<Route path="/chat/:userId" element={<Navigate to="/home/chat/:userId" replace />} />
+					<Route path="/chat/:userId" element={<ChatRedirect />} />
 
 					{/* Catch All */}
 					<Route path="*" element={<NotFoundPage />} />
