@@ -59,7 +59,7 @@ const MobileNav = () => {
 	const profileItems = [
 		{ path: user ? `/home/profile/${user.id}` : "/home/profile", label: "Profile", icon: User },
 		{ path: "/home/settings", label: "Settings", icon: Settings },
-		{ path: "/sign-up", label: "Join as Artist", icon: Mic },
+		{ path: "/artist/signup", label: "Join as Artist", icon: Mic },
 	];
 
 	return (

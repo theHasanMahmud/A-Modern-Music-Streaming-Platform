@@ -200,7 +200,7 @@ const LandingPage = () => {
 					</Button>
 
 					<Button
-						onClick={() => navigate("/sign-up")}
+						onClick={() => navigate("/artist/signup")}
 						size="lg"
 						className="group backdrop-blur-md bg-white/10 border-2 border-purple-400/30 text-purple-300 hover:bg-purple-400/20 hover:text-white text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 rounded-xl sm:rounded-2xl transition-all duration-300 hover:scale-105 w-full sm:w-auto"
 					>
@@ -1335,7 +1335,7 @@ const LandingPage = () => {
 								</span>
 						</Button>
 						<Button
-							onClick={() => navigate("/sign-up")}
+							onClick={() => navigate("/artist/signup")}
 							variant="outline"
 							size="lg"
 								className="group backdrop-blur-md bg-white/10 border-2 border-purple-400/30 text-purple-300 hover:bg-purple-400/20 hover:text-white text-xl px-12 py-8 rounded-2xl transition-all duration-300 hover:scale-105"
