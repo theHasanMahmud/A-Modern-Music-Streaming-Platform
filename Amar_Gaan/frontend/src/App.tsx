@@ -69,15 +69,28 @@ function App() {
 						<Route path="chat" element={<ChatPage />} />
 						<Route path="chat/:userId" element={<ChatPage />} />
 						<Route path="admin" element={<AdminPage />} />
-											<Route path="album/:id" element={<AlbumPage />} />
-					<Route path="search" element={<SearchPage />} />
-					<Route path="library" element={<LibraryPage />} />
-					<Route path="liked-songs" element={<LikedSongsPage />} />
-					<Route path="playlist/:id" element={<PlaylistPage />} />
-					<Route path="profile/:id" element={<UserProfilePage />} />
+						<Route path="album/:id" element={<AlbumPage />} />
+						<Route path="search" element={<SearchPage />} />
+						<Route path="library" element={<LibraryPage />} />
+						<Route path="liked-songs" element={<LikedSongsPage />} />
+						<Route path="playlist/:id" element={<PlaylistPage />} />
+						<Route path="profile/:id" element={<UserProfilePage />} />
 						<Route path="profile/edit" element={<EditProfilePage />} />
 						<Route path="settings" element={<SettingsPage />} />
 					</Route>
+
+					{/* Direct Protected Routes (for easier navigation) */}
+					<Route path="/search" element={<MainLayout><SearchPage /></MainLayout>} />
+					<Route path="/library" element={<MainLayout><LibraryPage /></MainLayout>} />
+					<Route path="/liked-songs" element={<MainLayout><LikedSongsPage /></MainLayout>} />
+					<Route path="/playlist/:id" element={<MainLayout><PlaylistPage /></MainLayout>} />
+					<Route path="/profile/:id" element={<MainLayout><UserProfilePage /></MainLayout>} />
+					<Route path="/profile/edit" element={<MainLayout><EditProfilePage /></MainLayout>} />
+					<Route path="/settings" element={<MainLayout><SettingsPage /></MainLayout>} />
+					<Route path="/admin" element={<MainLayout><AdminPage /></MainLayout>} />
+					<Route path="/album/:id" element={<MainLayout><AlbumPage /></MainLayout>} />
+					<Route path="/chat" element={<MainLayout><ChatPage /></MainLayout>} />
+					<Route path="/chat/:userId" element={<MainLayout><ChatPage /></MainLayout>} />
 
 					{/* Catch All */}
 					<Route path="*" element={<NotFoundPage />} />
