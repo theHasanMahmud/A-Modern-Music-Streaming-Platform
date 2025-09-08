@@ -56,7 +56,9 @@ app.use(
 			"http://127.0.0.1:3001", 
 			"http://127.0.0.1:3002",
 			"https://soundscape-frontend.vercel.app",
-			"https://*.vercel.app"
+			"https://*.vercel.app",
+			"https://a-modern-music-streaming-platform.vercel.app",
+			"https://a-modern-music-streaming-platform-git-master-thehasanmahmud.vercel.app"
 		],
 		credentials: true,
 	})

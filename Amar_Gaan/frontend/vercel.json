@@ -16,6 +16,7 @@
     }
   ],
   "env": {
-    "VITE_CLERK_PUBLISHABLE_KEY": "pk_test_bWFueS1zYXR5ci03OC5jbGVyay5hY2NvdW50cy5kZXYk"
+    "VITE_CLERK_PUBLISHABLE_KEY": "pk_test_bWFueS1zYXR5ci03OC5jbGVyay5hY2NvdW50cy5kZXYk",
+    "VITE_API_BASE_URL": "https://soundscape-backend-im0a.onrender.com"
   }
 }
