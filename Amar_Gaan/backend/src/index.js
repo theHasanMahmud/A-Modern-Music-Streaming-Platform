@@ -27,6 +27,7 @@ import genreRoutes from "./routes/genre.route.js";
 import favoriteRoutes from "./routes/favorite.route.js";
 import listeningHistoryRoutes from "./routes/listeningHistory.route.js";
 import notificationRoutes from "./routes/notification.route.js";
+import healthRoutes from "./routes/health.route.js";
 
 dotenv.config();
 
@@ -47,7 +48,16 @@ app.use((req, res, next) => {
 
 app.use(
 	cors({
-		origin: ["http://localhost:3000", "http://localhost:3001", "http://localhost:3002", "http://127.0.0.1:3000", "http://127.0.0.1:3001", "http://127.0.0.1:3002"],
+		origin: [
+			"http://localhost:3000", 
+			"http://localhost:3001", 
+			"http://localhost:3002", 
+			"http://127.0.0.1:3000", 
+			"http://127.0.0.1:3001", 
+			"http://127.0.0.1:3002",
+			"https://soundscape-frontend.vercel.app",
+			"https://*.vercel.app"
+		],
 		credentials: true,
 	})
 );
@@ -97,6 +107,7 @@ app.use("/api/genres", genreRoutes);
 app.use("/api/favorites", favoriteRoutes);
 app.use("/api/listening-history", listeningHistoryRoutes);
 app.use("/api/notifications", notificationRoutes);
+app.use("/api", healthRoutes);
 
 // Serve static files from uploads directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
