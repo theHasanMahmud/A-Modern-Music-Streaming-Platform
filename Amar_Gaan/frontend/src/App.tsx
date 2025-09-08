@@ -63,7 +63,7 @@ function App() {
 					<Route path="/artist/:id" element={<ArtistProfilePage />} />
 					<Route path="/artist-dashboard" element={<ArtistDashboardPage />} />
 
-					{/* Protected Routes */}
+					{/* Protected Routes - All under /home */}
 					<Route path="/home" element={<MainLayout />}>
 						<Route index element={<HomePage />} />
 						<Route path="chat" element={<ChatPage />} />
@@ -79,18 +79,18 @@ function App() {
 						<Route path="settings" element={<SettingsPage />} />
 					</Route>
 
-					{/* Direct Protected Routes (for easier navigation) */}
-					<Route path="/search" element={<MainLayout><SearchPage /></MainLayout>} />
-					<Route path="/library" element={<MainLayout><LibraryPage /></MainLayout>} />
-					<Route path="/liked-songs" element={<MainLayout><LikedSongsPage /></MainLayout>} />
-					<Route path="/playlist/:id" element={<MainLayout><PlaylistPage /></MainLayout>} />
-					<Route path="/profile/:id" element={<MainLayout><UserProfilePage /></MainLayout>} />
-					<Route path="/profile/edit" element={<MainLayout><EditProfilePage /></MainLayout>} />
-					<Route path="/settings" element={<MainLayout><SettingsPage /></MainLayout>} />
-					<Route path="/admin" element={<MainLayout><AdminPage /></MainLayout>} />
-					<Route path="/album/:id" element={<MainLayout><AlbumPage /></MainLayout>} />
-					<Route path="/chat" element={<MainLayout><ChatPage /></MainLayout>} />
-					<Route path="/chat/:userId" element={<MainLayout><ChatPage /></MainLayout>} />
+					{/* Redirect direct routes to /home routes */}
+					<Route path="/search" element={<Navigate to="/home/search" replace />} />
+					<Route path="/library" element={<Navigate to="/home/library" replace />} />
+					<Route path="/liked-songs" element={<Navigate to="/home/liked-songs" replace />} />
+					<Route path="/playlist/:id" element={<Navigate to="/home/playlist/:id" replace />} />
+					<Route path="/profile/:id" element={<Navigate to="/home/profile/:id" replace />} />
+					<Route path="/profile/edit" element={<Navigate to="/home/profile/edit" replace />} />
+					<Route path="/settings" element={<Navigate to="/home/settings" replace />} />
+					<Route path="/admin" element={<Navigate to="/home/admin" replace />} />
+					<Route path="/album/:id" element={<Navigate to="/home/album/:id" replace />} />
+					<Route path="/chat" element={<Navigate to="/home/chat" replace />} />
+					<Route path="/chat/:userId" element={<Navigate to="/home/chat/:userId" replace />} />
 
 					{/* Catch All */}
 					<Route path="*" element={<NotFoundPage />} />

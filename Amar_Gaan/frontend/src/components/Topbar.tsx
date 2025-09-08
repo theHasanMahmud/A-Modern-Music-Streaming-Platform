@@ -424,7 +424,7 @@ const Topbar = () => {
 						whileHover={{ scale: 1.05 }}
 						whileTap={{ scale: 0.95 }}
 					>
-						<Link to={"/admin"} className={cn(buttonVariants({ variant: "outline" }), "hidden sm:flex text-xs sm:text-sm")}>
+						<Link to={"/home/admin"} className={cn(buttonVariants({ variant: "outline" }), "hidden sm:flex text-xs sm:text-sm")}>
 							<LayoutDashboardIcon className='size-3 sm:size-4 mr-1 sm:mr-2' />
 							<span className="hidden lg:inline">Admin Dashboard</span>
 							<span className="lg:hidden">Admin</span>

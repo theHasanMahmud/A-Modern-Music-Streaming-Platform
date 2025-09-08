@@ -141,7 +141,7 @@ const LeftSidebar = () => {
 
 					<motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
 						<Link
-							to={"/search"}
+							to={"/home/search"}
 							className={cn(
 								buttonVariants({
 									variant: "ghost",
@@ -157,7 +157,7 @@ const LeftSidebar = () => {
 					<SignedIn>
 						<motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
 							<Link
-								to={"/chat"}
+								to={"/home/chat"}
 								className={cn(
 									buttonVariants({
 										variant: "ghost",
@@ -197,7 +197,7 @@ const LeftSidebar = () => {
 					<div className='pt-1 sm:pt-2 border-t border-zinc-800'>
 						<motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
 							<Link
-								to={user ? `/profile/${user.id}` : "/profile"}
+								to={user ? `/home/profile/${user.id}` : "/home/profile"}
 								className={cn(
 									buttonVariants({
 										variant: "ghost",
@@ -212,7 +212,7 @@ const LeftSidebar = () => {
 
 						{/* Settings and Premium links - HIDDEN FOR NOW */}
 						{/* <Link
-							to={"/settings"}
+							to={"/home/settings"}
 							className={cn(
 								buttonVariants({
 									variant: "ghost",

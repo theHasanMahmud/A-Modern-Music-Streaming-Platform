@@ -43,22 +43,22 @@ const MobileNav = () => {
 
 	const navigationItems = [
 		{ path: "/home", label: "Home", icon: Home },
-		{ path: "/search", label: "Search", icon: Search },
-		{ path: "/library", label: "Your Library", icon: Library },
+		{ path: "/home/search", label: "Search", icon: Search },
+		{ path: "/home/library", label: "Your Library", icon: Library },
 	];
 
 	const signedInItems = [
-		{ path: "/chat", label: "Messages", icon: MessageCircle },
-		{ path: "/liked-songs", label: "Liked Songs", icon: Heart },
+		{ path: "/home/chat", label: "Messages", icon: MessageCircle },
+		{ path: "/home/liked-songs", label: "Liked Songs", icon: Heart },
 	];
 
 	const adminItems = [
-		{ path: "/admin", label: "Admin Dashboard", icon: Library },
+		{ path: "/home/admin", label: "Admin Dashboard", icon: Library },
 	];
 
 	const profileItems = [
-		{ path: user ? `/profile/${user.id}` : "/profile", label: "Profile", icon: User },
-		{ path: "/settings", label: "Settings", icon: Settings },
+		{ path: user ? `/home/profile/${user.id}` : "/home/profile", label: "Profile", icon: User },
+		{ path: "/home/settings", label: "Settings", icon: Settings },
 		{ path: "/sign-up", label: "Join as Artist", icon: Mic },
 	];
 
