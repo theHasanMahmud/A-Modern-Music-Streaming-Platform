@@ -267,6 +267,12 @@ export const useChatStore = create<ChatStore>((set, get) => ({
       socket.on("connect_error", (error) => {
         console.error("❌ Socket connection error:", error);
         set({ isConnected: false });
+        toast.error("Failed to connect to server. Please refresh the page.");
+      });
+
+      socket.on("error", (error) => {
+        console.error("❌ Socket error:", error);
+        toast.error("Connection error occurred. Please refresh the page.");
       });
     } else {
       console.log("🔌 Socket already connected, skipping initialization");

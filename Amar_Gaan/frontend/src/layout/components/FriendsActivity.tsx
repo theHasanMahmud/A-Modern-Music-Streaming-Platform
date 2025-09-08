@@ -286,7 +286,7 @@ const FriendsActivity = () => {
 																			if (sameSongUsers.length > 0) {
 																				return (
 																					<div className='text-xs text-emerald-400 mt-1'>
-																						🎵 {sameSongUsers.length + 1} people listening
+																						🎵 {sameSongUsers.length} people listening
 																					</div>
 																				);
 																			}
@@ -331,7 +331,7 @@ const FriendsActivity = () => {
 																		if (songInfo) {
 																			const sameSongUsers = getUsersListeningToSameSong(songInfo.title);
 																			if (sameSongUsers.length > 0) {
-																				return `Join listening party with ${sameSongUsers.length + 1} people!`;
+																				return `Join listening party with ${sameSongUsers.length} people!`;
 																			}
 																		}
 																		// Show different text based on whether you're already playing the same song
