@@ -8,12 +8,8 @@ import { useFriendStore } from '@/stores/useFriendStore';
 import { useUser } from '@clerk/clerk-react';
 import { 
 	UserPlus, 
-	UserMinus, 
 	X, 
-	Check, 
-	X as XIcon,
-	Loader2,
-	MessageCircle
+	Loader2
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import VerifiedBadge from '@/components/ui/VerifiedBadge';
