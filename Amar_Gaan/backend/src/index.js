@@ -56,11 +56,15 @@ app.use(
 			"http://127.0.0.1:3001", 
 			"http://127.0.0.1:3002",
 			"https://soundscape-frontend.vercel.app",
-			"https://*.vercel.app",
 			"https://a-modern-music-streaming-platform.vercel.app",
-			"https://a-modern-music-streaming-platform-git-master-thehasanmahmud.vercel.app"
+			"https://a-modern-music-streaming-platform-git-master-thehasanmahmud.vercel.app",
+			"https://a-modern-music-streaming-platform-frontend.vercel.app",
+			"https://a-modern-music-streaming-platform-frontend-git-master-thehasanmahmud.vercel.app"
 		],
 		credentials: true,
+		methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+		allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin"],
+		optionsSuccessStatus: 200
 	})
 );
 
@@ -110,6 +114,16 @@ app.use("/api/favorites", favoriteRoutes);
 app.use("/api/listening-history", listeningHistoryRoutes);
 app.use("/api/notifications", notificationRoutes);
 app.use("/api", healthRoutes);
+
+// Add a test endpoint to verify connection
+app.get("/api/test", (req, res) => {
+	console.log("🧪 Test endpoint hit from:", req.headers.origin);
+	res.json({ 
+		message: "Backend connection successful!", 
+		timestamp: new Date().toISOString(),
+		origin: req.headers.origin
+	});
+});
 
 // Serve static files from uploads directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
