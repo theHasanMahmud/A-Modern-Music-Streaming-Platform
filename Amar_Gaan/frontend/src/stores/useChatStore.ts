@@ -49,11 +49,12 @@ interface ChatStore {
 const baseURL =
   import.meta.env.MODE === "development" 
     ? "http://localhost:5001" 
-    : import.meta.env.VITE_API_BASE_URL || "/";
+    : import.meta.env.VITE_API_BASE_URL || "https://amar-gaan-backend.onrender.com";
 
 const socket = io(baseURL, {
   autoConnect: false, // only connect if user is authenticated
   withCredentials: true,
+  transports: ['websocket', 'polling'], // Add fallback transport
 });
 
 export const useChatStore = create<ChatStore>((set, get) => ({
@@ -99,18 +100,30 @@ export const useChatStore = create<ChatStore>((set, get) => ({
       const maxRetries = 3;
       
       const connectWithRetry = () => {
+        console.log(`🔌 Attempting socket connection to: ${baseURL}`);
         socket.connect();
         
         socket.once("connect_error", (error) => {
           retryCount++;
-          console.log(`🔄 Socket connection attempt ${retryCount} failed:`, error.message);
+          console.log(`🔄 Socket connection attempt ${retryCount} failed:`, {
+            message: error.message,
+            description: (error as any).description,
+            context: (error as any).context,
+            type: (error as any).type,
+            baseURL: baseURL
+          });
           
           if (retryCount < maxRetries) {
             console.log(`🔄 Retrying socket connection in 2 seconds... (${retryCount}/${maxRetries})`);
             setTimeout(connectWithRetry, 2000);
           } else {
             console.error("❌ Max socket connection retries reached");
-            toast.error("Unable to connect to server. Please check your internet connection.");
+            console.log("🔇 Disabling real-time features due to connection failure");
+            set({ isConnected: false });
+            // Don't show error toast for production to avoid spam
+            if (import.meta.env.MODE === "development") {
+              toast.error("Unable to connect to server. Please check your internet connection.");
+            }
           }
         });
       };
@@ -289,17 +302,21 @@ export const useChatStore = create<ChatStore>((set, get) => ({
       socket.on("connect_error", (error) => {
         console.error("❌ Socket connection error:", error);
         set({ isConnected: false });
-        // Only show error toast if it's not a network error (which might be temporary)
-        if (error.message && !error.message.includes("Network Error")) {
-          toast.error("Failed to connect to server. Please refresh the page.");
+        // Only show error toast in development mode
+        if (import.meta.env.MODE === "development") {
+          if (error.message && !error.message.includes("Network Error")) {
+            toast.error("Failed to connect to server. Please refresh the page.");
+          }
         }
       });
 
       socket.on("error", (error) => {
         console.error("❌ Socket error:", error);
-        // Only show error toast for critical errors
-        if (error.message && !error.message.includes("Network Error")) {
-          toast.error("Connection error occurred. Please refresh the page.");
+        // Only show error toast in development mode
+        if (import.meta.env.MODE === "development") {
+          if (error.message && !error.message.includes("Network Error")) {
+            toast.error("Connection error occurred. Please refresh the page.");
+          }
         }
       });
     } else {
