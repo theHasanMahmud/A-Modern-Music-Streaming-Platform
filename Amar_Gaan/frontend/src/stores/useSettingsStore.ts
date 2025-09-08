@@ -69,6 +69,9 @@ export interface UniqueSettings {
 		downloadQuality: "low" | "medium" | "high";
 		offlineMode: boolean;
 	};
+	unique?: {
+		[key: string]: any;
+	};
 }
 
 export interface AdvancedSettings {
@@ -90,6 +93,9 @@ export interface AdvancedSettings {
 		appleMusicSync: boolean;
 		youtubeMusicSync: boolean;
 		discordRichPresence: boolean;
+	};
+	advanced?: {
+		[key: string]: any;
 	};
 }
 

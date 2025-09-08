@@ -26,6 +26,7 @@ interface Playlist {
 	createdAt: string;
 	updatedAt: string;
 	userId: string;
+	isLiked?: boolean;
 }
 
 interface PlaylistStore {
@@ -52,6 +53,7 @@ interface PlaylistStore {
 	initializeLikedSongsPlaylist: () => Promise<void>;
 	likePlaylist: (playlistId: string) => Promise<void>;
 	unlikePlaylist: (playlistId: string) => Promise<void>;
+	checkPlaylistLikeStatus: (playlistId: string) => Promise<boolean>;
 }
 
 export const usePlaylistStore = create<PlaylistStore>((set, get) => ({
@@ -481,6 +483,16 @@ export const usePlaylistStore = create<PlaylistStore>((set, get) => ({
 		} catch (error: any) {
 			console.error('Error unliking playlist:', error);
 			throw error;
+		}
+	},
+
+	checkPlaylistLikeStatus: async (playlistId: string) => {
+		try {
+			const response = await axiosInstance.get(`/playlists/${playlistId}/like-status`);
+			return response.data.isLiked || false;
+		} catch (error: any) {
+			console.error('Error checking playlist like status:', error);
+			return false;
 		}
 	}
 }));
