@@ -3,7 +3,7 @@ export interface Song {
 	title: string;
 	artist: string;
 	featuredArtist?: string;
-	albumId: string | null;
+	albumId?: string | null;
 	imageUrl: string;
 	audioUrl: string;
 	duration: number; // Duration in minutes
@@ -11,8 +11,8 @@ export interface Song {
 	mood?: string;
 	releaseDate?: string;
 	totalPlays?: number;
-	createdAt: string;
-	updatedAt: string;
+	createdAt?: string;
+	updatedAt?: string;
 }
 
 export interface Album {

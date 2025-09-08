@@ -113,7 +113,7 @@ const AddSongToPlaylistModal = ({ isOpen, onClose, playlistId, playlistName }: A
 			setSearchResults(results || []);
 			
 			if (!results || results.length === 0) {
-				toast.info('No songs found. Try a different search term.');
+				toast.success('No songs found. Try a different search term.');
 			} else {
 				toast.success(`Found ${results.length} song${results.length > 1 ? 's' : ''}`);
 			}

@@ -77,7 +77,7 @@ const PlaylistCard = ({ playlist, onEdit, onDelete, showActions = true }: Playli
 		if (isCurrentPlaylist && isPlaying) {
 			// If we're playing this playlist, toggle pause
 			// This would need to be implemented in the player store
-			toast.info('Pause functionality will be implemented');
+			toast.success('Pause functionality will be implemented');
 		} else {
 			// Start playing the playlist
 			playAlbum(playlist.songs as any);
