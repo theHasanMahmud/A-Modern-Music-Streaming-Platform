@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 // Pages
@@ -47,6 +47,7 @@ function App() {
 				<AuthWrapper>
 					<Routes>
 					{/* Public Routes */}
+					<Route path="/" element={<Navigate to="/landing" replace />} />
 					<Route path="/landing" element={<LandingPage />} />
 					<Route path="/sign-up" element={<SignUpPage />} />
 					<Route path="/login" element={<LoginPage />} />
@@ -61,7 +62,7 @@ function App() {
 					<Route path="/artist-dashboard" element={<ArtistDashboardPage />} />
 
 					{/* Protected Routes */}
-					<Route path="/" element={<MainLayout />}>
+					<Route path="/home" element={<MainLayout />}>
 						<Route index element={<HomePage />} />
 						<Route path="chat" element={<ChatPage />} />
 						<Route path="chat/:userId" element={<ChatPage />} />
