@@ -110,7 +110,8 @@ app.get("/api/test", (req, res) => {
 		message: "Backend connection successful!", 
 		timestamp: new Date().toISOString(),
 		origin: req.headers.origin,
-		cors: "Updated for Vercel deployment"
+		cors: "Updated for Vercel deployment",
+		version: "2.0.0"
 	});
 });
 
