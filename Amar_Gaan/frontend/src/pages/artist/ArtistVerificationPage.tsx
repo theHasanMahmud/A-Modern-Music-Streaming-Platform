@@ -109,20 +109,20 @@ const ArtistVerificationPage = () => {
 	if (!verificationStatus) {
 		return (
 			<div className="min-h-screen bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 flex items-center justify-center p-4">
-				<div className="w-full max-w-2xl">
+				<div className="w-full max-w-sm sm:max-w-md md:max-w-2xl">
 					{/* Header */}
-					<div className="text-center mb-8">
-						<div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mb-4">
-							<Mic className="size-10 text-white" />
+					<div className="text-center mb-6 sm:mb-8">
+						<div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mb-3 sm:mb-4">
+							<Mic className="size-8 sm:size-10 text-white" />
 						</div>
-						<h1 className="text-4xl font-bold text-white mb-2">Become an Artist</h1>
-						<p className="text-zinc-400 text-lg">Create your artist profile to get started</p>
+						<h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">Become an Artist</h1>
+						<p className="text-zinc-400 text-sm sm:text-base md:text-lg">Create your artist profile to get started</p>
 					</div>
 
 					<Card className="bg-zinc-800/50 border-zinc-700 shadow-2xl">
 						<CardHeader className="text-center">
-							<CardTitle className="text-2xl text-white">Artist Profile Required</CardTitle>
-							<CardDescription className="text-zinc-400">
+							<CardTitle className="text-xl sm:text-2xl text-white">Artist Profile Required</CardTitle>
+							<CardDescription className="text-zinc-400 text-sm sm:text-base">
 								You need to create an artist profile before applying for verification
 							</CardDescription>
 						</CardHeader>
@@ -191,17 +191,17 @@ const ArtistVerificationPage = () => {
 
 	return (
 		<div className="min-h-screen bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 flex items-center justify-center p-4">
-			<div className="w-full max-w-4xl">
+			<div className="w-full max-w-sm sm:max-w-md md:max-w-4xl">
 				{/* Header */}
-				<div className="text-center mb-8">
-					<div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mb-4">
-						<Shield className="size-10 text-white" />
+				<div className="text-center mb-6 sm:mb-8">
+					<div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mb-3 sm:mb-4">
+						<Shield className="size-8 sm:size-10 text-white" />
 					</div>
-					<h1 className="text-4xl font-bold text-white mb-2">Artist Verification</h1>
-					<p className="text-zinc-400 text-lg">Get verified and build trust with your audience</p>
+					<h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">Artist Verification</h1>
+					<p className="text-zinc-400 text-sm sm:text-base md:text-lg">Get verified and build trust with your audience</p>
 				</div>
 
-				<div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+				<div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
 					{/* Main Status Card */}
 					<div className="lg:col-span-2">
 						<Card className="bg-zinc-800/50 border-zinc-700 shadow-2xl">
@@ -209,12 +209,12 @@ const ArtistVerificationPage = () => {
 								<div className="flex justify-center mb-4">
 									{getStatusIcon()}
 								</div>
-								<CardTitle className={`text-2xl font-bold ${getStatusColor()}`}>
+								<CardTitle className={`text-xl sm:text-2xl font-bold ${getStatusColor()}`}>
 									{verificationStatus.verificationStatus === 'approved' ? 'Artist Verified' : 
 									 verificationStatus.verificationStatus === 'pending' ? 'Verification in Progress' :
 									 'Verification Failed'}
 								</CardTitle>
-								<CardDescription className="text-zinc-400 text-lg">
+								<CardDescription className="text-zinc-400 text-sm sm:text-base md:text-lg">
 									{getStatusMessage()}
 								</CardDescription>
 							</CardHeader>

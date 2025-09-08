@@ -335,16 +335,16 @@ const ArtistSignupPage = () => {
 				</Button>
 			</div>
 
-			<div className="max-w-4xl mx-auto px-4 pb-8">
+			<div className="max-w-sm sm:max-w-md md:max-w-4xl mx-auto px-4 pb-8">
 				<Card className="bg-zinc-800/50 border-zinc-700 shadow-2xl">
 					<CardHeader className="text-center">
-						<div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-							<Mic className="size-8 text-white" />
+						<div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+							<Mic className="size-6 sm:size-8 text-white" />
 						</div>
-						<CardTitle className="text-2xl font-bold text-white">
+						<CardTitle className="text-xl sm:text-2xl font-bold text-white">
 							{isEditMode ? "Edit Artist Profile" : "Join as Artist"}
 						</CardTitle>
-						<CardDescription className="text-zinc-400">
+						<CardDescription className="text-zinc-400 text-sm sm:text-base">
 							{isEditMode 
 								? "Update your artist profile information"
 								: "Create your artist profile and get verified on SoundScape"
