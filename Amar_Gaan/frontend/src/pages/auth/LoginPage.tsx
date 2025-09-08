@@ -114,7 +114,7 @@ const LoginPage = () => {
 				))}
 			</div>
 
-			<div className="relative z-10 w-full max-w-md">
+			<div className="relative z-10 w-full max-w-sm sm:max-w-md">
 				{/* Logo and Title */}
 				<motion.div 
 					className="text-center mb-8"
@@ -122,16 +122,16 @@ const LoginPage = () => {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.8 }}
 				>
-					<div className="relative inline-flex items-center justify-center w-20 h-20 mb-6">
-						<div className="w-20 h-20 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-cyan-500/25">
-							<Headphones className="size-10 text-white" />
+					<div className="relative inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 mb-4 sm:mb-6">
+						<div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg shadow-cyan-500/25">
+							<Headphones className="size-8 sm:size-10 text-white" />
 						</div>
-						<div className="absolute inset-0 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-2xl blur opacity-30 animate-pulse"></div>
+						<div className="absolute inset-0 bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 rounded-xl sm:rounded-2xl blur opacity-30 animate-pulse"></div>
 					</div>
-					<h1 className="text-4xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-3">
+					<h1 className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-2 sm:mb-3">
 						Welcome Back
 					</h1>
-					<p className="text-gray-300 text-lg">Continue your musical journey</p>
+					<p className="text-gray-300 text-sm sm:text-base md:text-lg">Continue your musical journey</p>
 				</motion.div>
 
 				{/* Login Form */}
@@ -142,8 +142,8 @@ const LoginPage = () => {
 				>
 					<Card className="backdrop-blur-md bg-white/5 border border-cyan-400/20 shadow-2xl shadow-cyan-500/10">
 						<CardHeader className="text-center">
-							<CardTitle className="text-2xl text-white">Sign In</CardTitle>
-							<CardDescription className="text-gray-300">
+							<CardTitle className="text-xl sm:text-2xl text-white">Sign In</CardTitle>
+							<CardDescription className="text-gray-300 text-sm sm:text-base">
 								Enter your credentials to access your account
 							</CardDescription>
 						</CardHeader>
