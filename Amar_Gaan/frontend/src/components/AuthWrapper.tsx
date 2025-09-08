@@ -11,6 +11,8 @@ const AuthWrapper = ({ children }: AuthWrapperProps) => {
 	const { isSignedIn, isLoaded, userId } = useAuth();
 	const location = useLocation();
 	const [isChecking, setIsChecking] = useState(true);
+	
+	console.log("🔐 AuthWrapper rendering...");
 
 	// List of public routes that don't require authentication
 	const publicRoutes = [
@@ -63,13 +65,13 @@ const AuthWrapper = ({ children }: AuthWrapperProps) => {
 	// If user is signed in and trying to access auth pages, redirect to home
 	if (isSignedIn && (location.pathname === "/login" || location.pathname === "/sign-up" || location.pathname === "/verify-email" || location.pathname === "/forgot-password")) {
 		console.log("Redirecting authenticated user from auth page to home");
-		return <Navigate to="/" replace />;
+		return <Navigate to="/home" replace />;
 	}
 
 	// If user is signed in and trying to access landing page, redirect to home
 	if (isSignedIn && location.pathname === "/landing") {
 		console.log("Redirecting authenticated user from landing to home");
-		return <Navigate to="/" replace />;
+		return <Navigate to="/home" replace />;
 	}
 
 	// If user is not signed in and trying to access a protected route, redirect to landing

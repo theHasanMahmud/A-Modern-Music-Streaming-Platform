@@ -41,6 +41,8 @@ import AuthWrapper from "./components/AuthWrapper";
 import { SidebarProvider } from "./contexts/SidebarContext";
 
 function App() {
+	console.log("🎭 App component rendering...");
+	
 	return (
 		<Router>
 			<SidebarProvider>
