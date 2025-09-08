@@ -47,7 +47,9 @@ interface ChatStore {
 }
 
 const baseURL =
-  import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
+  import.meta.env.MODE === "development" 
+    ? "http://localhost:5001" 
+    : import.meta.env.VITE_API_BASE_URL || "/";
 
 const socket = io(baseURL, {
   autoConnect: false, // only connect if user is authenticated
